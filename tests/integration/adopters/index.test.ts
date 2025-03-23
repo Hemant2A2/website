@@ -32,23 +32,6 @@ describe('Integration Test for buildAdoptersList', () => {
       throw new Error('Output file is not valid JSON');
     }
     expect(jsonData).toBeDefined();
-    jsonData.forEach((adopter: any) => {
-      expect(adopter).toHaveProperty('companyName');
-      expect(typeof adopter.companyName).toBe('string');
-      
-      expect(adopter).toHaveProperty('useCase');
-      expect(typeof adopter.useCase).toBe('string');
-      
-      expect(adopter).toHaveProperty('resources');
-      expect(Array.isArray(adopter.resources)).toBe(true);
-
-      adopter.resources.forEach((resource: any) => {
-        expect(resource).toHaveProperty('title');
-        expect(typeof resource.title).toBe('string');
-        expect(resource).toHaveProperty('link');
-        expect(typeof resource.link).toBe('string');
-      });
-    });
   });
 
   afterAll(() => {

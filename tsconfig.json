@@ -27,8 +27,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "**/*.json"
-, "tests/integration/build-docs.test.ts"  ],
+    "**/*.json"],
   "exclude": [
     "node_modules",
     "netlify"

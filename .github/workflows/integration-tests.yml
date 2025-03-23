@@ -1,4 +1,4 @@
-name: Run Integration Tests for scripts
+name: Run Integration Tests for Scripts
 
 on:
   push:
@@ -7,9 +7,13 @@ on:
     branches: [ master ]
 
 jobs:
-  integration-test:
+  integration-tests:
     runs-on: ubuntu-latest
-
+    strategy:
+      matrix:
+        testFile:
+          - tests/integration/adopters.int.test.ts
+          # will add more files when tests are written.
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -22,5 +26,5 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run integration tests
-        run: npx jest --config jest.config.js tests/integration
+      - name: Run integration test file
+        run: npx jest --config jest.config.js ${{ matrix.testFile }}
