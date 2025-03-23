@@ -12,7 +12,7 @@ jobs:
     strategy:
       matrix:
         testFile:
-          - tests/integration/adopters.int.test.ts
+          - tests/integration/adopters/index.test.ts
           # will add more files when tests are written.
     steps:
       - name: Checkout repository
