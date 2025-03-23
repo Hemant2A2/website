@@ -28,7 +28,7 @@
     "**/*.ts",
     "**/*.tsx",
     "**/*.json"
-  ],
+, "tests/integration/build-docs.test.ts"  ],
   "exclude": [
     "node_modules",
     "netlify"
