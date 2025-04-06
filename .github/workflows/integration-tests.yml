@@ -2,9 +2,9 @@ name: Run Integration Tests for Scripts
 
 on:
   push:
-    branches: [ master ]
+    branches: [ '**' ]
   pull_request:
-    branches: [ master ]
+    branches: [ '**' ]
 
 jobs:
   integration-tests:
@@ -26,5 +26,11 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run integration test file
-        run: npx jest --config jest.config.js ${{ matrix.testFile }}
+      - name: Run integration test file with coverage
+        run: npx jest --config jest.config.js --coverage ${{ matrix.testFile }}
+      
+      - name: Upload Coverage Report
+        uses: actions/upload-artifact@v3
+        with:
+          name: coverage-report
+          path: coverage
