@@ -1,0 +1,30 @@
+name: Run Integration Tests for Scripts
+
+on:
+  push:
+    branches: [ '**' ]
+  pull_request:
+    branches: [ '**' ]
+
+jobs:
+  integration-tests:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        testFile:
+          - tests/integration/adopters/index.test.ts
+          # will add more files when tests are written.
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run integration test file with coverage
+        run: npx jest --config jest.config.js --coverage ${{ matrix.testFile }}

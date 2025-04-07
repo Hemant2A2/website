@@ -9,6 +9,6 @@ const currentDirPath = dirname(currentFilePath);
 /**
  * Builds the adopters list by converting a YAML file to JSON and writing it to a specified path.
  */
-export async function buildAdoptersList() {
-  writeJSON('config/adopters.yml', resolve(currentDirPath, '../../config', 'adopters.json'));
+export async function buildAdoptersList(readPath: string = 'config/adopters.yml', writePath: string = 'adopters.json') {
+  writeJSON(readPath, resolve(currentDirPath, '../../config', writePath));
 }
